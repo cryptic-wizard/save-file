@@ -7,7 +7,7 @@ namespace SettingsTextFileTest.Steps
     [Binding]
     public sealed class SettingsTextFileStepDefinitions
     {
-        private SettingsTextFile settingsTextFile;
+        private static SettingsTextFile settingsTextFile = new SettingsTextFile();
 
         public SettingsTextFileStepDefinitions(ScenarioContext scenarioContext)
         {

@@ -23,7 +23,6 @@ namespace SettingsFileConsole
             int userTotalLogins = readFile.Ints["UserTotalLogins"];
             double userHours = readFile.Doubles["UserHours"];
 
-            int debug = 0;
         }
     }
 }
