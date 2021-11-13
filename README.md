@@ -1,4 +1,4 @@
-# settings-file
+# settings-text-file
 
 ## Description
 * Used to simplify reading and writing arbitrary data types to settings files
