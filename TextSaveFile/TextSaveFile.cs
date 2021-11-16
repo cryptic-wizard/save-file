@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace SettingsFile
+namespace CrypticWizard.TextSaveFile
 {
-    public class SettingsTextFile
+    public class TextSaveFile
     {
         // String Variables
         public Dictionary<string, string> Strings { get; private set; } = new Dictionary<string, string>();
@@ -92,7 +92,7 @@ namespace SettingsFile
             { "decimal"  ,   DataTypes.Decimal   },
         };
 
-        public SettingsTextFile()
+        public TextSaveFile()
         {
 
         }
@@ -178,7 +178,7 @@ namespace SettingsFile
             }
         }
 
-        public static SettingsTextFile Read(string fileName, char delimeter = '=')
+        public static TextSaveFile Read(string fileName, char delimeter = '=')
         {
             // Check if file exists
             if (!Exists(fileName))
@@ -187,7 +187,7 @@ namespace SettingsFile
             }
 
             // Read the file
-            SettingsTextFile settingsTextFile = new SettingsTextFile();
+            TextSaveFile settingsTextFile = new TextSaveFile();
             List<string> lines = new List<string>(File.ReadAllLines(fileName));
             string[] settingsFileEntry;
             DataTypes dataType;

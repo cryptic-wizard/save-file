@@ -1,39 +1,39 @@
-# settings-text-file
+# text-save-file
 
 ## Description
-* Used to simplify reading and writing arbitrary data types to settings files
-* Removes the need to explicitly convert non-string variables to string when writing a settings file
-* Removes the need to explicitly parse non-string variables when reading a settings file
-* [Strong typing](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/built-in-types) is preserved when reading a settings file
+* Used to simplify reading and writing arbitrary data types to text files
+* Removes the need to explicitly convert non-string variables to string when writing a text file
+* Removes the need to explicitly parse non-string variables when reading a text file
+* [Strong typing](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/built-in-types) is preserved when reading a text save file
 
 ## Tests
-[![.NET 5.0](https://github.com/cryptic-wizard/settings-text-file/actions/workflows/dotnet.yml/badge.svg)](https://github.com/cryptic-wizard/settings-text-file/actions/workflows/dotnet.yml)
+[![.NET 5.0](https://github.com/cryptic-wizard/text-save-file/actions/workflows/dotnet.yml/badge.svg)](https://github.com/cryptic-wizard/text-save-file/actions/workflows/dotnet.yml)
 
-[![.NET Core 3.1](https://github.com/cryptic-wizard/settings-text-file/actions/workflows/dotnetcore.yml/badge.svg)](https://github.com/cryptic-wizard/settings-text-file/actions/workflows/dotnetcore.yml)
+[![.NET Core 3.1](https://github.com/cryptic-wizard/text-save-file/actions/workflows/dotnetcore.yml/badge.svg)](https://github.com/cryptic-wizard/text-save-file/actions/workflows/dotnetcore.yml)
 
 ## Usage
 ### Install Package
 ```Text
-dotnet add package CrypticWizard.TODO
+dotnet add package CrypticWizard.TextSaveFile
 ```
 ```xml
-<PackageReference Include="CrypticWizard.TODO" Version="0.1.0"/>
+<PackageReference Include="CrypticWizard.TextSaveFile" Version="0.1.0"/>
 ```
 ### Include Package
 ```C#
-using CrypticWizard.TODO;
+using CrypticWizard.TextSaveFile;
 ```
 
 ### Write Settings File
 ```C#
-SettingsTextFile settingsTextFile = new SettingsTextFile();
+TextSaveFile textSaveFile = new TextSaveFile();
 
-settingsTextFile.Add("UserWorkstation", "DESKTOP-123");
-settingsTextFile.Add("UserLastLogin", DateTime.Now);
-settingsTextFile.Add("UserTotalLogins", 7);
-settingsTextFile.Add("UserHours", 11.3);
+textSaveFile.Add("UserWorkstation", "DESKTOP-123");
+textSaveFile.Add("UserLastLogin", DateTime.Now);
+textSaveFile.Add("UserTotalLogins", 7);
+textSaveFile.Add("UserHours", 11.3);
 
-settingsTextFile.Write("mySettings.txt");
+textSaveFile.Write("mySettings.txt");
 ```
 ```Text
 UserWorkstation=string=DESKTOP-123
@@ -44,7 +44,7 @@ UserHours=double=11.3
 
 ### Read Settings File
 ```C#
-SettingsTextFile readFile = SettingsTextFile.Read("mySettings.txt");
+TextSaveFile readFile = TextSaveFile.Read("mySettings.txt");
 
 string userWorkstation = readFile.Strings["UserWorkstation"];
 DateTime userLastLogin = readFile.DateTimes["UserLastLogin"];

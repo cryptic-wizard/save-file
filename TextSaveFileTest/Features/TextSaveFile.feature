@@ -1,7 +1,7 @@
-﻿Feature: Settings Text File
+﻿Feature: Text Save File
 
 Background:
-	Given I create a new settings file
+	Given I create a new text save file
 
 Scenario: Read/Write String
 	When I add the string 'myString' with value 'DESKTOP-123' to the settings file

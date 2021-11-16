@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SettingsTextFile\SettingsTextFile.csproj" />
+    <ProjectReference Include="..\TextSaveFile\TextSaveFile.csproj" />
   </ItemGroup>
 
 </Project>
