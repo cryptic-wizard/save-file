@@ -10,12 +10,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{833A67D8-CB06-4565-B819-6A725856A49C}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		.github\workflows\dotnetcore.yml = .github\workflows\dotnetcore.yml
 		LICENSE.md = LICENSE.md
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SettingsTextFileTest", "SettingsTextFileTest\SettingsTextFileTest.csproj", "{65E12FAA-7EF0-4171-A996-97AA029FDBA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SettingsTextFileTest", "SettingsTextFileTest\SettingsTextFileTest.csproj", "{65E12FAA-7EF0-4171-A996-97AA029FDBA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

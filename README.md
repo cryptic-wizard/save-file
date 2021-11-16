@@ -7,6 +7,8 @@
 * [Strong typing](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/built-in-types) is preserved when reading a settings file
 
 ## Tests
+[![.NET 5.0](https://github.com/cryptic-wizard/settings-text-file/actions/workflows/dotnet.yml/badge.svg)](https://github.com/cryptic-wizard/settings-text-file/actions/workflows/dotnet.yml)
+
 [![.NET Core 3.1](https://github.com/cryptic-wizard/settings-text-file/actions/workflows/dotnetcore.yml/badge.svg)](https://github.com/cryptic-wizard/settings-text-file/actions/workflows/dotnetcore.yml)
 
 ## Usage
