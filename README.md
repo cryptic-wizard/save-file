@@ -1,7 +1,7 @@
 # text-save-file
 
 ## Description
-* A text file read/write class for arbitrary variable types .NET and .NET Core
+* A text file read/write class for arbitrary data types .NET and .NET Core
 * Removes the need to explicitly convert non-string variables to string when writing a text file
 * Removes the need to explicitly parse non-string variables when reading a text file
 * [Strong typing](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/built-in-types) is preserved when reading a text save file
