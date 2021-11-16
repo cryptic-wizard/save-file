@@ -22,8 +22,6 @@ namespace SettingsTextFileTest.Steps
         [BeforeScenario]
         public void BeforeScenario()
         {
-            settingsTextFile = null;
-
             if(SettingsTextFile.Exists(fileName))
             {
                 File.Delete(fileName);
