@@ -22,7 +22,6 @@ namespace SettingsFileConsole
             DateTime userLastLogin = readFile.DateTimes["UserLastLogin"];
             int userTotalLogins = readFile.Ints["UserTotalLogins"];
             double userHours = readFile.Doubles["UserHours"];
-
         }
     }
 }

@@ -48,6 +48,50 @@ namespace SettingsFile
             Decimal,
         }
 
+        private static readonly Dictionary<DataTypes, string> DataTypeToString = new Dictionary<DataTypes, string>()
+        {
+            { DataTypes.String    , "string"     },
+            { DataTypes.Char      , "char"       },
+            { DataTypes.DateTime  , "datetime"   },
+                                                 
+            { DataTypes.Bool      , "bool"       },
+            { DataTypes.SByte     , "sbyte"      },
+            { DataTypes.Short     , "short"      },
+            { DataTypes.Int       , "int"        },
+            { DataTypes.Long      , "long"       },
+                                                 
+            { DataTypes.Byte      , "byte"       },
+            { DataTypes.UShort    , "ushort"     },
+            { DataTypes.UInt      , "uint"       },
+            { DataTypes.ULong     , "ulong"      },
+                                                 
+            { DataTypes.Double    , "double"     },
+            { DataTypes.Float     , "float"      },
+            { DataTypes.Decimal   , "decimal"    },
+        };
+
+        private static readonly Dictionary<string, DataTypes> StringToDataType = new Dictionary<string, DataTypes>()
+        {
+            { "string"   ,   DataTypes.String    },
+            { "char"     ,   DataTypes.Char      },
+            { "datetime" ,   DataTypes.DateTime  },
+
+            { "bool"     ,   DataTypes.Bool      },
+            { "sbyte"    ,   DataTypes.SByte     },
+            { "short"    ,   DataTypes.Short     },
+            { "int"      ,   DataTypes.Int       },
+            { "long"     ,   DataTypes.Long      },
+
+            { "byte"     ,   DataTypes.Byte      },
+            { "ushort"   ,   DataTypes.UShort    },
+            { "uint"     ,   DataTypes.UInt      },
+            { "ulong"    ,   DataTypes.ULong     },
+
+            { "double"   ,   DataTypes.Double    },
+            { "float"    ,   DataTypes.Float     },
+            { "decimal"  ,   DataTypes.Decimal   },
+        };
+
         public SettingsTextFile()
         {
 
@@ -60,76 +104,76 @@ namespace SettingsFile
 
         public void Write(string fileName, char delimiter = '=')
         {
-            string delimeterString = delimiter.ToString();
+            string d = delimiter.ToString();
 
             using(StreamWriter sw = new StreamWriter(File.OpenWrite(fileName)))
             {
                 // String Variables
                 foreach (KeyValuePair<string, string> kvp in Strings)
                 {
-                    sw.WriteLine(kvp.Key + delimeterString + DataTypes.String.ToString()    + delimeterString + kvp.Value);
-                }                                                                                              
-                foreach (KeyValuePair<string, char> kvp in Chars)                                              
-                {                                                                                              
-                    sw.WriteLine(kvp.Key + delimeterString + DataTypes.Char.ToString()      + delimeterString + kvp.Value.ToString());
-                }                                                                                              
-                foreach (KeyValuePair<string, DateTime> kvp in DateTimes)                                      
-                {                                                                                              
-                    sw.WriteLine(kvp.Key + delimeterString + DataTypes.DateTime.ToString()  + delimeterString + kvp.Value.ToString());
-                }                                                                                              
-                                                                                                               
-                // Signed Variables                                                                            
-                foreach (KeyValuePair<string, bool> kvp in Bools)                                              
-                {                                                                                              
-                    sw.WriteLine(kvp.Key + delimeterString + DataTypes.Bool.ToString()      + delimeterString + kvp.Value.ToString());
-                }                                                                                              
-                foreach (KeyValuePair<string, sbyte> kvp in SBytes)                                            
-                {                                                                                              
-                    sw.WriteLine(kvp.Key + delimeterString + DataTypes.SByte.ToString()     + delimeterString + kvp.Value.ToString());
-                }                                                                                              
-                foreach (KeyValuePair<string, short> kvp in Shorts)                                            
-                {                                                                                              
-                    sw.WriteLine(kvp.Key + delimeterString + DataTypes.Short.ToString()     + delimeterString + kvp.Value.ToString());
-                }                                                                                              
-                foreach (KeyValuePair<string, int> kvp in Ints)                                                
-                {                                                                                              
-                    sw.WriteLine(kvp.Key + delimeterString + DataTypes.Int.ToString()       + delimeterString + kvp.Value.ToString());
-                }                                                                                              
-                foreach (KeyValuePair<string, long> kvp in Longs)                                              
-                {                                                                                              
-                    sw.WriteLine(kvp.Key + delimeterString + DataTypes.Long.ToString()      + delimeterString + kvp.Value.ToString());
-                }                                                                                              
-                                                                                                               
-                // Unsigned Variables                                                                          
-                foreach (KeyValuePair<string, byte> kvp in Bytes)                                              
-                {                                                                                              
-                    sw.WriteLine(kvp.Key + delimeterString + DataTypes.Byte.ToString()      + delimeterString + kvp.Value.ToString());
-                }                                                                                              
-                foreach (KeyValuePair<string, ushort> kvp in UShorts)                                          
-                {                                                                                              
-                    sw.WriteLine(kvp.Key + delimeterString + DataTypes.UShort.ToString()    + delimeterString + kvp.Value.ToString());
-                }                                                                                              
-                foreach (KeyValuePair<string, uint> kvp in UInts)                                              
-                {                                                                                              
-                    sw.WriteLine(kvp.Key + delimeterString + DataTypes.UInt.ToString()      + delimeterString + kvp.Value.ToString());
-                }                                                                                              
-                foreach (KeyValuePair<string, ulong> kvp in ULongs)                                            
-                {                                                                                              
-                    sw.WriteLine(kvp.Key + delimeterString + DataTypes.ULong.ToString()     + delimeterString + kvp.Value.ToString());
-                }                                                                                              
-                                                                                                               
-                // Decimal Variables                                                                           
-                foreach (KeyValuePair<string, double> kvp in Doubles)                                          
-                {                                                                                              
-                    sw.WriteLine(kvp.Key + delimeterString + DataTypes.Double.ToString()    + delimeterString + kvp.Value.ToString());
-                }                                                                                              
-                foreach (KeyValuePair<string, float> kvp in Floats)                                            
-                {                                                                                              
-                    sw.WriteLine(kvp.Key + delimeterString + DataTypes.Float.ToString()     + delimeterString + kvp.Value.ToString());
-                }                                                                                              
-                foreach (KeyValuePair<string, decimal> kvp in Decimals)                                        
-                {                                                                                              
-                    sw.WriteLine(kvp.Key + delimeterString + DataTypes.Decimal.ToString()   + delimeterString + kvp.Value.ToString());
+                    sw.WriteLine(kvp.Key + d + DataTypeToString[DataTypes.String]    + d + kvp.Value);
+                }                                                                                               
+                foreach (KeyValuePair<string, char> kvp in Chars)                                               
+                {                                                                                               
+                    sw.WriteLine(kvp.Key + d + DataTypeToString[DataTypes.Char]      + d + kvp.Value.ToString());
+                }                                                                                                     
+                foreach (KeyValuePair<string, DateTime> kvp in DateTimes)                                             
+                {                                                                                                     
+                    sw.WriteLine(kvp.Key + d + DataTypeToString[DataTypes.DateTime]  + d + kvp.Value.ToString());
+                }                                                                                                     
+                                                                                                                      
+                // Signed Variables                                                                                   
+                foreach (KeyValuePair<string, bool> kvp in Bools)                                                     
+                {                                                                                                     
+                    sw.WriteLine(kvp.Key + d + DataTypeToString[DataTypes.Bool]      + d + kvp.Value.ToString());
+                }                                                                                                     
+                foreach (KeyValuePair<string, sbyte> kvp in SBytes)                                                   
+                {                                                                                                     
+                    sw.WriteLine(kvp.Key + d + DataTypeToString[DataTypes.SByte]     + d + kvp.Value.ToString());
+                }                                                                                                     
+                foreach (KeyValuePair<string, short> kvp in Shorts)                                                   
+                {                                                                                                     
+                    sw.WriteLine(kvp.Key + d + DataTypeToString[DataTypes.Short]     + d + kvp.Value.ToString());
+                }                                                                                                     
+                foreach (KeyValuePair<string, int> kvp in Ints)                                                       
+                {                                                                                                     
+                    sw.WriteLine(kvp.Key + d + DataTypeToString[DataTypes.Int]       + d + kvp.Value.ToString());
+                }                                                                                                     
+                foreach (KeyValuePair<string, long> kvp in Longs)                                                     
+                {                                                                                                     
+                    sw.WriteLine(kvp.Key + d + DataTypeToString[DataTypes.Long]      + d + kvp.Value.ToString());
+                }                                                                                                     
+                                                                                                                      
+                // Unsigned Variables                                                                                 
+                foreach (KeyValuePair<string, byte> kvp in Bytes)                                                     
+                {                                                                                                     
+                    sw.WriteLine(kvp.Key + d + DataTypeToString[DataTypes.Byte]      + d + kvp.Value.ToString());
+                }                                                                                                     
+                foreach (KeyValuePair<string, ushort> kvp in UShorts)                                                 
+                {                                                                                                     
+                    sw.WriteLine(kvp.Key + d + DataTypeToString[DataTypes.UShort]    + d + kvp.Value.ToString());
+                }                                                                                                     
+                foreach (KeyValuePair<string, uint> kvp in UInts)                                                     
+                {                                                                                                     
+                    sw.WriteLine(kvp.Key + d + DataTypeToString[DataTypes.UInt]      + d + kvp.Value.ToString());
+                }                                                                                                     
+                foreach (KeyValuePair<string, ulong> kvp in ULongs)                                                   
+                {                                                                                                     
+                    sw.WriteLine(kvp.Key + d + DataTypeToString[DataTypes.ULong]     + d + kvp.Value.ToString());
+                }                                                                                                     
+                                                                                                                      
+                // Decimal Variables                                                                                  
+                foreach (KeyValuePair<string, double> kvp in Doubles)                                                 
+                {                                                                                                     
+                    sw.WriteLine(kvp.Key + d + DataTypeToString[DataTypes.Double]    + d + kvp.Value.ToString());
+                }                                                                                                     
+                foreach (KeyValuePair<string, float> kvp in Floats)                                                   
+                {                                                                                                     
+                    sw.WriteLine(kvp.Key + d + DataTypeToString[DataTypes.Float]     + d + kvp.Value.ToString());
+                }                                                                                                     
+                foreach (KeyValuePair<string, decimal> kvp in Decimals)                                               
+                {                                                                                                     
+                    sw.WriteLine(kvp.Key + d + DataTypeToString[DataTypes.Decimal]   + d + kvp.Value.ToString());
                 }
             }
         }
@@ -159,7 +203,7 @@ namespace SettingsFile
                 }
 
                 // Allow enum parse exception to be thrown to user
-                dataType = (DataTypes)Enum.Parse(typeof(DataTypes), settingsFileEntry[1]);
+                dataType = StringToDataType[settingsFileEntry[1]];
 
                 // Add entry based on data type
                 // String Variables
