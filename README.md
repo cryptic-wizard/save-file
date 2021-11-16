@@ -4,13 +4,23 @@
 * Used to simplify reading and writing arbitrary data types to settings files
 * Removes the need to explicitly convert non-string variables to string when writing a settings file
 * Removes the need to explicitly parse non-string variables when reading a settings file
-* [Strong typing](https://en.wikipedia.org/wiki/Strong_and_weak_typing) is preserved when reading a settings file
+* [Strong typing](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/built-in-types) is preserved when reading a settings file
 
 ## Tests
+[![.NET Core 3.1](https://github.com/cryptic-wizard/settings-text-file/actions/workflows/dotnetcore.yml/badge.svg)](https://github.com/cryptic-wizard/settings-text-file/actions/workflows/dotnetcore.yml)
 
 ## Usage
-### Install Package:
-### Include Package:
+### Install Package
+```Text
+dotnet add package CrypticWizard.TODO
+```
+```xml
+<PackageReference Include="CrypticWizard.TODO" Version="0.1.0"/>
+```
+### Include Package
+```C#
+using CrypticWizard.TODO;
+```
 
 ### Write Settings File
 ```C#
@@ -24,10 +34,10 @@ settingsTextFile.Add("UserHours", 11.3);
 settingsTextFile.Write("mySettings.txt");
 ```
 ```Text
-UserWorkstation=String=DESKTOP-123
-UserLastLogin=DateTime=11/12/2021 8:09:19 PM
-UserTotalLogins=Int=7
-UserHours=Double=11.3
+UserWorkstation=string=DESKTOP-123
+UserLastLogin=datetime=11/12/2021 8:09:19 PM
+UserTotalLogins=int=7
+UserHours=double=11.3
 ```
 
 ### Read Settings File
@@ -47,6 +57,22 @@ DESKTOP-123
 ```
 
 ## Features
+### Supported Data Types
+* string
+* char
+* DateTime
+* bool
+* sbyte
+* short
+* int
+* long
+* byte
+* ushort
+* uint
+* ulong
+* double
+* float
+* decimal
 ### Recently Added
 ### Planned Features
 
