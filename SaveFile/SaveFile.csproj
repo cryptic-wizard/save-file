@@ -9,20 +9,20 @@
     <Authors>cryptic-wizard</Authors>
     <LicenseType>MIT</LicenseType>
     <Copyright>Copyright ©2021 cryptic-wizard</Copyright>
-    <RepositoryUrl>https://github.com/cryptic-wizard/text-save-file</RepositoryUrl>
+    <RepositoryUrl>https://github.com/cryptic-wizard/save-file</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <NeutralLanguage>en</NeutralLanguage>
     <SignAssembly>false</SignAssembly>
 
     <PackageId>CrypticWizard.SaveFile</PackageId>
-    <Version>0.1.0</Version>
-    <PackageProjectUrl>https://github.com/cryptic-wizard/text-save-file</PackageProjectUrl>
+    <Version>0.2.0</Version>
+    <PackageProjectUrl>https://github.com/cryptic-wizard/save-file</PackageProjectUrl>
     <PackageTags>save file .txt .csv</PackageTags>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.png</PackageIcon>
     <PackageDescription>A text file read/write class for arbitrary data types .NET and .NET Core</PackageDescription>
-    <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+    <PackageReleaseNotes>Replaced dictionary lookups with get functions</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

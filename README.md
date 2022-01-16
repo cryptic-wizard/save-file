@@ -1,4 +1,4 @@
-# text-save-file
+# save-file
 
 ## Description
 * A text file read/write class for arbitrary data types .NET and .NET Core
@@ -7,21 +7,21 @@
 * [Strong typing](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/built-in-types) is preserved when reading a text save file
 
 ## Tests
-[![.NET 5.0](https://github.com/cryptic-wizard/text-save-file/actions/workflows/dotnet.yml/badge.svg)](https://github.com/cryptic-wizard/text-save-file/actions/workflows/dotnet.yml)
+[![.NET 5.0](https://github.com/cryptic-wizard/save-file/actions/workflows/dotnet.yml/badge.svg)](https://github.com/cryptic-wizard/save-file/actions/workflows/dotnet.yml)
 
-[![.NET Core 3.1](https://github.com/cryptic-wizard/text-save-file/actions/workflows/dotnetcore.yml/badge.svg)](https://github.com/cryptic-wizard/text-save-file/actions/workflows/dotnetcore.yml)
+[![.NET Core 3.1](https://github.com/cryptic-wizard/save-file/actions/workflows/dotnetcore.yml/badge.svg)](https://github.com/cryptic-wizard/save-file/actions/workflows/dotnetcore.yml)
 
 ## Usage
 ### Install Package
 ```Text
-dotnet add package CrypticWizard.TextSaveFile
+dotnet add package CrypticWizard.SaveFile
 ```
 ```xml
-<PackageReference Include="CrypticWizard.TextSaveFile" Version="0.1.0"/>
+<PackageReference Include="CrypticWizard.SaveFile" Version="0.2.0"/>
 ```
 ### Include Package
 ```C#
-using CrypticWizard.TextSaveFile;
+using CrypticWizard.SaveFile;
 ```
 
 ### Write Settings File
@@ -46,10 +46,10 @@ Hours=double=11.3
 ```C#
 TextSaveFile readFile = TextSaveFile.Read("mySettings.txt");
 
-string workstation = readFile.Strings["Workstation"];
-DateTime lastLogin = readFile.DateTimes["LastLogin"];
-int totalLogins = readFile.Ints["TotalLogins"];
-double hours = readFile.Doubles["Hours"];
+string userWorkstation = readFile.GetString("UserWorkstation");
+DateTime? userLastLogin = readFile.GetDateTime("UserLastLogin");
+int? userTotalLogins = readFile.GetInt("UserTotalLogins");
+double? userHours = readFile.GetDouble("UserHours");
 ```
 ```Text
 DESKTOP-123
@@ -86,4 +86,4 @@ DESKTOP-123
 * [SpecFlow+ LivingDoc](https://specflow.org/tools/living-doc/)
 * [Run SpecFlow Tests](https://github.com/marketplace/actions/run-specflow-tests)
 ## License
-* [MIT License](https://github.com/cryptic-wizard/settings-file/blob/main/LICENSE.md)
+* [MIT License](https://github.com/cryptic-wizard/save-file/blob/main/LICENSE.md)
