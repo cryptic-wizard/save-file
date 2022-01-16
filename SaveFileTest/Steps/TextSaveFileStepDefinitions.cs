@@ -3,7 +3,7 @@ using NUnit.Framework;
 using System.IO;
 using System;
 
-namespace CrypticWizard.TextSaveFile
+namespace CrypticWizard.SaveFile
 {
     [Binding]
     public sealed class TextSaveFileStepDefinitions
@@ -21,7 +21,7 @@ namespace CrypticWizard.TextSaveFile
         [BeforeScenario]
         public void BeforeScenario()
         {
-            if(TextSaveFile.Exists(fileName))
+            if (TextSaveFile.Exists(fileName))
             {
                 File.Delete(fileName);
             }
@@ -156,106 +156,121 @@ namespace CrypticWizard.TextSaveFile
         [Then(@"the string '(.*)' with value '(.*)' is in the settings file")]
         public void ThenTheStringWithValueIsInTheSettingsFile(string key, string value)
         {
-            Assert.True(textSaveFile.Strings.ContainsKey(key));
-            Assert.AreEqual(value, textSaveFile.Strings[key]);
+            string entry = textSaveFile.GetString(key);
+            Assert.IsNotNull(entry);
+            Assert.AreEqual(value, entry);
         }
 
         [Then(@"the char '(.*)' with value '(.*)' is in the settings file")]
         public void ThenTheCharWithValueIsInTheSettingsFile(string key, char value)
         {
-            Assert.True(textSaveFile.Chars.ContainsKey(key));
-            Assert.AreEqual(value, textSaveFile.Chars[key]);
+            char? entry = textSaveFile.GetChar(key);
+            Assert.IsNotNull(entry);
+            Assert.AreEqual(value, entry);
         }
 
         [Then(@"the datetime '(.*)' with value '(.*)' is in the settings file")]
         public void ThenTheDatetimeWithValueIsInTheSettingsFile(string key, DateTime value)
         {
-            Assert.True(textSaveFile.DateTimes.ContainsKey(key));
-            Assert.AreEqual(value, textSaveFile.DateTimes[key]);
+            DateTime? entry = textSaveFile.GetDateTime(key);
+            Assert.IsNotNull(entry);
+            Assert.AreEqual(value, entry);
         }
 
         [Then(@"the bool '(.*)' with value '(.*)' is in the settings file")]
         public void ThenTheBoolWithValueIsInTheSettingsFile(string key, bool value)
         {
-            Assert.True(textSaveFile.Bools.ContainsKey(key));
-            Assert.AreEqual(value, textSaveFile.Bools[key]);
+            bool? entry = textSaveFile.GetBool(key);
+            Assert.IsNotNull(entry);
+            Assert.AreEqual(value, entry);
         }
 
         [Then(@"the sbyte '(.*)' with value '(.*)' is in the settings file")]
         public void ThenTheSByteWithValueIsInTheSettingsFile(string key, sbyte value)
         {
-            Assert.True(textSaveFile.SBytes.ContainsKey(key));
-            Assert.AreEqual(value, textSaveFile.SBytes[key]);
+            sbyte? entry = textSaveFile.GetSByte(key);
+            Assert.IsNotNull(entry);
+            Assert.AreEqual(value, entry);
         }
 
         [Then(@"the short '(.*)' with value '(.*)' is in the settings file")]
         public void ThenTheShortWithValueIsInTheSettingsFile(string key, short value)
         {
-            Assert.True(textSaveFile.Shorts.ContainsKey(key));
-            Assert.AreEqual(value, textSaveFile.Shorts[key]);
+            short? entry = textSaveFile.GetShort(key);
+            Assert.IsNotNull(entry);
+            Assert.AreEqual(value, entry);
         }
 
         [Then(@"the int '(.*)' with value '(.*)' is in the settings file")]
         public void ThenTheIntWithValueIsInTheSettingsFile(string key, int value)
         {
-            Assert.True(textSaveFile.Ints.ContainsKey(key));
-            Assert.AreEqual(value, textSaveFile.Ints[key]);
+            int? entry = textSaveFile.GetInt(key);
+            Assert.IsNotNull(entry);
+            Assert.AreEqual(value, entry);
         }
 
         [Then(@"the long '(.*)' with value '(.*)' is in the settings file")]
         public void ThenTheLongWithValueIsInTheSettingsFile(string key, long value)
         {
-            Assert.True(textSaveFile.Longs.ContainsKey(key));
-            Assert.AreEqual(value, textSaveFile.Longs[key]);
+            long? entry = textSaveFile.GetLong(key);
+            Assert.IsNotNull(entry);
+            Assert.AreEqual(value, entry);
         }
 
         [Then(@"the byte '(.*)' with value '(.*)' is in the settings file")]
         public void ThenTheByteWithValueIsInTheSettingsFile(string key, byte value)
         {
-            Assert.True(textSaveFile.Bytes.ContainsKey(key));
-            Assert.AreEqual(value, textSaveFile.Bytes[key]);
+            byte? entry = textSaveFile.GetByte(key);
+            Assert.IsNotNull(entry);
+            Assert.AreEqual(value, entry);
         }
 
         [Then(@"the ushort '(.*)' with value '(.*)' is in the settings file")]
         public void ThenTheUShortWithValueIsInTheSettingsFile(string key, ushort value)
         {
-            Assert.True(textSaveFile.UShorts.ContainsKey(key));
-            Assert.AreEqual(value, textSaveFile.UShorts[key]);
+            ushort? entry = textSaveFile.GetUShort(key);
+            Assert.IsNotNull(entry);
+            Assert.AreEqual(value, entry);
         }
 
         [Then(@"the uint '(.*)' with value '(.*)' is in the settings file")]
         public void ThenTheUIntWithValueIsInTheSettingsFile(string key, uint value)
         {
-            Assert.True(textSaveFile.UInts.ContainsKey(key));
-            Assert.AreEqual(value, textSaveFile.UInts[key]);
+            uint? entry = textSaveFile.GetUInt(key);
+            Assert.IsNotNull(entry);
+            Assert.AreEqual(value, entry);
         }
 
         [Then(@"the ulong '(.*)' with value '(.*)' is in the settings file")]
         public void ThenTheULongWithValueIsInTheSettingsFile(string key, ulong value)
         {
-            Assert.True(textSaveFile.ULongs.ContainsKey(key));
-            Assert.AreEqual(value, textSaveFile.ULongs[key]);
+            ulong? entry = textSaveFile.GetULong(key);
+            Assert.IsNotNull(entry);
+            Assert.AreEqual(value, entry);
         }
 
         [Then(@"the double '(.*)' with value '(.*)' is in the settings file")]
         public void ThenTheDoubleWithValueIsInTheSettingsFile(string key, double value)
         {
-            Assert.True(textSaveFile.Doubles.ContainsKey(key));
-            Assert.AreEqual(value, textSaveFile.Doubles[key]);
+            double? entry = textSaveFile.GetDouble(key);
+            Assert.IsNotNull(entry);
+            Assert.AreEqual(value, entry);
         }
 
         [Then(@"the float '(.*)' with value '(.*)' is in the settings file")]
         public void ThenTheFloatWithValueIsInTheSettingsFile(string key, float value)
         {
-            Assert.True(textSaveFile.Floats.ContainsKey(key));
-            Assert.AreEqual(value, textSaveFile.Floats[key]);
+            float? entry = textSaveFile.GetFloat(key);
+            Assert.IsNotNull(entry);
+            Assert.AreEqual(value, entry);
         }
 
         [Then(@"the decimal '(.*)' with value '(.*)' is in the settings file")]
         public void ThenTheDecimalWithValueIsInTheSettingsFile(string key, decimal value)
         {
-            Assert.True(textSaveFile.Decimals.ContainsKey(key));
-            Assert.AreEqual(value, textSaveFile.Decimals[key]);
+            decimal? entry = textSaveFile.GetDecimal(key);
+            Assert.IsNotNull(entry);
+            Assert.AreEqual(value, entry);
         }
 
         #endregion

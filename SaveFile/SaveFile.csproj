@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>netcoreapp3.1;net5.0</TargetFrameworks>
-    <Title>TextSaveFile</Title>
+    <Title>SaveFile</Title>
     <Description>A text file read/write class for arbitrary data types .NET and .NET Core</Description>
-    <AssemblyName>TextSaveFile</AssemblyName>
-    <RootNamespace>TextSaveFile</RootNamespace>
+    <AssemblyName>SaveFile</AssemblyName>
+    <RootNamespace>SaveFile</RootNamespace>
     <Authors>cryptic-wizard</Authors>
     <LicenseType>MIT</LicenseType>
     <Copyright>Copyright ©2021 cryptic-wizard</Copyright>
@@ -14,10 +14,10 @@
     <NeutralLanguage>en</NeutralLanguage>
     <SignAssembly>false</SignAssembly>
 
-    <PackageId>CrypticWizard.TextSaveFile</PackageId>
+    <PackageId>CrypticWizard.SaveFile</PackageId>
     <Version>0.1.0</Version>
-    <PackageProjectUrl>https://github.com/cryptic-wizard/random-word-generator</PackageProjectUrl>
-    <PackageTags>rng random</PackageTags>
+    <PackageProjectUrl>https://github.com/cryptic-wizard/text-save-file</PackageProjectUrl>
+    <PackageTags>save file .txt .csv</PackageTags>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.png</PackageIcon>

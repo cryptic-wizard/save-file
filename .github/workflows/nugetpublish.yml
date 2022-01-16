@@ -22,5 +22,5 @@ jobs:
       - name: Publish NuGet Package
         run: |
           dotnet nuget add source "https://nuget.pkg.github.com/cryptic-wizard/index.json" -n github -u cryptic-wizard -p ${{ secrets.NUGET_PUBLISH_TOKEN }} --store-password-in-clear-text
-          dotnet pack TextSaveFile -c Release
-          dotnet nuget push "TextSaveFile/bin/Release/CrypticWizard.TextSaveFile.*.*.*.nupkg" -s "github" -k ${{ secrets.NUGET_PUBLISH_TOKEN }} --skip-duplicate
+          dotnet pack SaveFile -c Release
+          dotnet nuget push "SaveFile/bin/Release/CrypticWizard.SaveFile.*.*.*.nupkg" -s "github" -k ${{ secrets.NUGET_PUBLISH_TOKEN }} --skip-duplicate

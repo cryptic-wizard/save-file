@@ -14,14 +14,14 @@ jobs:
         dotnet-version: '3.1.x'
     - uses: cryptic-wizard/run-specflow-tests@v1.2.0
       with:
-        test-assembly-path: TextSaveFileTest/bin/Release/netcoreapp3.1
-        test-assembly-dll: TextSaveFileTest.dll
+        test-assembly-path: SaveFileTest/bin/Release/netcoreapp3.1
+        test-assembly-dll: SaveFileTest.dll
         test-execution-json: TestExecution.json
-        output-html: TextSaveFileTestResults.html
+        output-html: SaveFileTestResults.html
         framework: netcoreapp3.1
     - if: success() || failure()
       uses: actions/upload-artifact@v2
       with:
-        name: TextSaveFileTestResults
+        name: SaveFileTestResults
         path: |
-          TextSaveFileTestResults.html
+          SaveFileTestResults.html

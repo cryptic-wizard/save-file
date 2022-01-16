@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextSaveFile", "TextSaveFile\TextSaveFile.csproj", "{B3516A05-9242-4E48-857E-8F9C8289ED5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaveFile", "SaveFile\SaveFile.csproj", "{B3516A05-9242-4E48-857E-8F9C8289ED5A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextSaveFileConsole", "TextSaveFileConsole\TextSaveFileConsole.csproj", "{B8121D1A-C9F7-4669-BF5A-C54DBB16F053}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaveFileConsole", "SaveFileConsole\SaveFileConsole.csproj", "{B8121D1A-C9F7-4669-BF5A-C54DBB16F053}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{833A67D8-CB06-4565-B819-6A725856A49C}"
 	ProjectSection(SolutionItems) = preProject
@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TextSaveFileTest", "TextSaveFileTest\TextSaveFileTest.csproj", "{65E12FAA-7EF0-4171-A996-97AA029FDBA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaveFileTest", "SaveFileTest\SaveFileTest.csproj", "{65E12FAA-7EF0-4171-A996-97AA029FDBA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

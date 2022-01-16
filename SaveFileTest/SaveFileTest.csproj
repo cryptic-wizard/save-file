@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TextSaveFile\TextSaveFile.csproj" />
+    <ProjectReference Include="..\SaveFile\SaveFile.csproj" />
   </ItemGroup>
 
 </Project>

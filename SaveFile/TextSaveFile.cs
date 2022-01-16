@@ -2,47 +2,50 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace CrypticWizard.TextSaveFile
+namespace CrypticWizard.SaveFile
 {
     public class TextSaveFile
     {
         // String Variables
-        public Dictionary<string, string> Strings { get; private set; } = new Dictionary<string, string>();
-        public Dictionary<string, char> Chars { get; private set; } = new Dictionary<string, char>();
-        public Dictionary<string, DateTime> DateTimes { get; private set; } = new Dictionary<string, DateTime>();
+        private Dictionary<string, string> Strings      = new Dictionary<string, string>();
+        private Dictionary<string, char> Chars          = new Dictionary<string, char>();
+        private Dictionary<string, DateTime> DateTimes  = new Dictionary<string, DateTime>();
 
         // Signed Variables
-        public Dictionary<string, bool> Bools { get; private set; } = new Dictionary<string, bool>();
-        public Dictionary<string, sbyte> SBytes { get; private set; } = new Dictionary<string, sbyte>();
-        public Dictionary<string, short> Shorts { get; private set; } = new Dictionary<string, short>();
-        public Dictionary<string, int> Ints { get; private set; } = new Dictionary<string, int>();
-        public Dictionary<string, long> Longs { get; private set; } = new Dictionary<string, long>();
+        private Dictionary<string, bool> Bools          = new Dictionary<string, bool>();
+        private Dictionary<string, sbyte> SBytes        = new Dictionary<string, sbyte>();
+        private Dictionary<string, short> Shorts        = new Dictionary<string, short>();
+        private Dictionary<string, int> Ints            = new Dictionary<string, int>();
+        private Dictionary<string, long> Longs          = new Dictionary<string, long>();
 
         // Unsigned Variables
-        public Dictionary<string, byte> Bytes { get; private set; } = new Dictionary<string, byte>();
-        public Dictionary<string, ushort> UShorts { get; private set; } = new Dictionary<string, ushort>();
-        public Dictionary<string, uint> UInts { get; private set; } = new Dictionary<string, uint>();
-        public Dictionary<string, ulong> ULongs { get; private set; } = new Dictionary<string, ulong>();
+        private Dictionary<string, byte> Bytes          = new Dictionary<string, byte>();
+        private Dictionary<string, ushort> UShorts      = new Dictionary<string, ushort>();
+        private Dictionary<string, uint> UInts          = new Dictionary<string, uint>();
+        private Dictionary<string, ulong> ULongs        = new Dictionary<string, ulong>();
 
         // Decimal Variables
-        public Dictionary<string, double> Doubles { get; private set; } = new Dictionary<string, double>();
-        public Dictionary<string, float> Floats { get; private set; } = new Dictionary<string, float>();
-        public Dictionary<string, decimal> Decimals { get; private set; } = new Dictionary<string, decimal>();
+        private Dictionary<string, double> Doubles      = new Dictionary<string, double>();
+        private Dictionary<string, float> Floats        = new Dictionary<string, float>();
+        private Dictionary<string, decimal> Decimals    = new Dictionary<string, decimal>();
 
         public enum DataTypes
         {
             String,
             Char,
             DateTime,
+
             Bool,
             SByte,
             Short,
             Int,
             Long,
+
             Byte,
             UShort,
             UInt,
             ULong,
+
             Double,
             Float,
             Decimal,
@@ -111,6 +114,10 @@ namespace CrypticWizard.TextSaveFile
                 // String Variables
                 foreach (KeyValuePair<string, string> kvp in Strings)
                 {
+                    if (kvp.Value.Contains(delimiter))
+                    {
+                        throw new FormatException(kvp.Value + " contains the delimiter " + delimiter.ToString());
+                    }
                     sw.WriteLine(kvp.Key + d + DataTypeToString[DataTypes.String]    + d + kvp.Value);
                 }                                                                                               
                 foreach (KeyValuePair<string, char> kvp in Chars)                                               
@@ -178,17 +185,17 @@ namespace CrypticWizard.TextSaveFile
             }
         }
 
-        public static TextSaveFile Read(string fileName, char delimeter = '=')
+        public static TextSaveFile Read(string filekey, char delimeter = '=')
         {
             // Check if file exists
-            if (!Exists(fileName))
+            if (!Exists(filekey))
             {
                 return null;
             }
 
             // Read the file
             TextSaveFile settingsTextFile = new TextSaveFile();
-            List<string> lines = new List<string>(File.ReadAllLines(fileName));
+            List<string> lines = new List<string>(File.ReadAllLines(filekey));
             string[] settingsFileEntry;
             DataTypes dataType;
 
@@ -280,73 +287,356 @@ namespace CrypticWizard.TextSaveFile
 
         #region Add
 
-        // String Variables
-        public void Add(string name, string value)
+        /// <summary>
+        /// Adds a string to the save file
+        /// </summary>
+        public void Add(string key, string value)
         {
-            Strings.Add(name, value);
+            Strings.Add(key, value);
         }
-        public void Add(string name, char value)
+        /// <summary>
+        /// Adds a char to the save file
+        /// </summary>
+        public void Add(string key, char value)
         {
-            Chars.Add(name, value);
+            Chars.Add(key, value);
         }
-        public void Add(string name, DateTime value)
+        /// <summary>
+        /// Adds a DateTime to the save file
+        /// </summary>
+        public void Add(string key, DateTime value)
         {
-            DateTimes.Add(name, value);
+            DateTimes.Add(key, value);
+        }
+        /// <summary>
+        /// Adds a bool to the save file
+        /// </summary>
+        public void Add(string key, bool value)
+        {
+            Bools.Add(key, value);
+        }
+        /// <summary>
+        /// Adds an sbyte to the save file
+        /// </summary>
+        public void Add(string key, sbyte value)
+        {
+            SBytes.Add(key, value);
+        }
+        /// <summary>
+        /// Adds a short to the save file
+        /// </summary>
+        public void Add(string key, short value)
+        {
+            Shorts.Add(key, value);
+        }
+        /// <summary>
+        /// Adds an int to the save file
+        /// </summary>
+        public void Add(string key, int value)
+        {
+            Ints.Add(key, value);
+        }
+        /// <summary>
+        /// Adds a long to the save file
+        /// </summary>
+        public void Add(string key, long value)
+        {
+            Longs.Add(key, value);
+        }
+        /// <summary>
+        /// Adds a byte to the save file
+        /// </summary>
+        public void Add(string key, byte value)
+        {
+            Bytes.Add(key, value);
+        }
+        /// <summary>
+        /// Adds a ushort to the save file
+        /// </summary>
+        public void Add(string key, ushort value)
+        {
+            UShorts.Add(key, value);
+        }
+        /// <summary>
+        /// Adds a uint to the save file
+        /// </summary>
+        public void Add(string key, uint value)
+        {
+            UInts.Add(key, value);
+        }
+        /// <summary>
+        /// Adds a ulong to the save file
+        /// </summary>
+        public void Add(string key, ulong value)
+        {
+            ULongs.Add(key, value);
         }
 
-        // Signed Variables
-        public void Add(string name, bool value)
+        /// <summary>
+        /// Adds a double to the save file
+        /// </summary>
+        public void Add(string key, double value)
         {
-            Bools.Add(name, value);
+            Doubles.Add(key, value);
         }
-        public void Add(string name, sbyte value)
+        /// <summary>
+        /// Adds a float to the save file
+        /// </summary>
+        public void Add(string key, float value)
         {
-            SBytes.Add(name, value);
+            Floats.Add(key, value);
         }
-        public void Add(string name, short value)
+        /// <summary>
+        /// Adds a decimal to the save file
+        /// </summary>
+        public void Add(string key, decimal value)
         {
-            Shorts.Add(name, value);
-        }
-        public void Add(string name, int value)
-        {
-            Ints.Add(name, value);
-        }
-        public void Add(string name, long value)
-        {
-            Longs.Add(name, value);
-        }
-
-        // Unsigned Variables
-        public void Add(string name, byte value)
-        {
-            Bytes.Add(name, value);
-        }
-        public void Add(string name, ushort value)
-        {
-            UShorts.Add(name, value);
-        }
-        public void Add(string name, uint value)
-        {
-            UInts.Add(name, value);
-        }
-        public void Add(string name, ulong value)
-        {
-            ULongs.Add(name, value);
+            Decimals.Add(key, value);
         }
 
-        // Decimal Variables
-        public void Add(string name, double value)
-        {
-            Doubles.Add(name, value);
-        }
-        public void Add(string name, float value)
-        {
-            Floats.Add(name, value);
-        }
+        #endregion
 
-        public void Add(string name, decimal value)
+        #region Get
+
+        /// <summary>
+        /// Gets a string from the save file
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns> null if key not found </returns>
+        public string GetString(string key)
         {
-            Decimals.Add(name, value);
+            if (Strings.ContainsKey(key))
+            {
+                return Strings[key];
+            }
+            else
+            {
+                return null;
+            }
+        }
+        /// <summary>
+        /// Gets a char from the save file
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns> null if key not found </returns>
+        public char? GetChar(string key)
+        {
+            if (Chars.ContainsKey(key))
+            {
+                return Chars[key];
+            }
+            else
+            {
+                return null;
+            }
+        }
+        /// <summary>
+        /// Gets a DateTime from the save file
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns> null if key not found </returns>
+        public DateTime? GetDateTime(string key)
+        {
+            if (DateTimes.ContainsKey(key))
+            {
+                return DateTimes[key];
+            }
+            else
+            {
+                return null;
+            }
+        }
+        /// <summary>
+        /// Gets a bool from the save file
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns> null if key not found </returns>
+        public bool? GetBool(string key)
+        {
+            if (Bools.ContainsKey(key))
+            {
+                return Bools[key];
+            }
+            else
+            {
+                return null;
+            }
+        }
+        /// <summary>
+        /// Gets an sbyte from the save file
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns> null if key not found </returns>
+        public sbyte? GetSByte(string key)
+        {
+            if (SBytes.ContainsKey(key))
+            {
+                return SBytes[key];
+            }
+            else
+            {
+                return null;
+            }
+        }
+        /// <summary>
+        /// Gets a short from the save file
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns> null if key not found </returns>
+        public short? GetShort(string key)
+        {
+            if (Shorts.ContainsKey(key))
+            {
+                return Shorts[key];
+            }
+            else
+            {
+                return null;
+            }
+        }
+        /// <summary>
+        /// Gets an int from the save file
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns> null if key not found </returns>
+        public int? GetInt(string key)
+        {
+            if (Ints.ContainsKey(key))
+            {
+                return Ints[key];
+            }
+            else
+            {
+                return null;
+            }
+        }
+        /// <summary>
+        /// Gets a long from the save file
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns> null if key not found </returns>
+        public long? GetLong(string key)
+        {
+            if (Longs.ContainsKey(key))
+            {
+                return Longs[key];
+            }
+            else
+            {
+                return null;
+            }
+        }
+        /// <summary>
+        /// Gets a byte from the save file
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns> null if key not found </returns>
+        public byte? GetByte(string key)
+        {
+            if (Bytes.ContainsKey(key))
+            {
+                return Bytes[key];
+            }
+            else
+            {
+                return null;
+            }
+        }
+        /// <summary>
+        /// Gets a ushort from the save file
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns> null if key not found </returns>
+        public ushort? GetUShort(string key)
+        {
+            if (UShorts.ContainsKey(key))
+            {
+                return UShorts[key];
+            }
+            else
+            {
+                return null;
+            }
+        }
+        /// <summary>
+        /// Gets a uint from the save file
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns> null if key not found </returns>
+        public uint? GetUInt(string key)
+        {
+            if (UInts.ContainsKey(key))
+            {
+                return UInts[key];
+            }
+            else
+            {
+                return null;
+            }
+        }
+        /// <summary>
+        /// Gets a ulong from the save file
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns> null if key not found </returns>
+        public ulong? GetULong(string key)
+        {
+            if (ULongs.ContainsKey(key))
+            {
+                return ULongs[key];
+            }
+            else
+            {
+                return null;
+            }
+        }
+        /// <summary>
+        /// Gets a double from the save file
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns> null if key not found </returns>
+        public double? GetDouble(string key)
+        {
+            if (Doubles.ContainsKey(key))
+            {
+                return Doubles[key];
+            }
+            else
+            {
+                return null;
+            }
+        }
+        /// <summary>
+        /// Gets a float from the save file
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns> null if key not found </returns>
+        public float? GetFloat(string key)
+        {
+            if (Floats.ContainsKey(key))
+            {
+                return Floats[key];
+            }
+            else
+            {
+                return null;
+            }
+        }
+        /// <summary>
+        /// Gets a decimal from the save file
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns> null if key not found </returns>
+        public decimal? GetDecimal(string key)
+        {
+            if (Decimals.ContainsKey(key))
+            {
+                return Decimals[key];
+            }
+            else
+            {
+                return null;
+            }
         }
 
         #endregion

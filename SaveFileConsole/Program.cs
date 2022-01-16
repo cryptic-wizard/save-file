@@ -1,7 +1,6 @@
-﻿using CrypticWizard.TextSaveFile;
-using System;
+﻿using System;
 
-namespace CrypticWizard.TextSaveFile
+namespace CrypticWizard.SaveFile
 {
     class Program
     {
@@ -18,10 +17,10 @@ namespace CrypticWizard.TextSaveFile
 
             TextSaveFile readFile = TextSaveFile.Read("settings.txt");
 
-            string userWorkstation = readFile.Strings["UserWorkstation"];
-            DateTime userLastLogin = readFile.DateTimes["UserLastLogin"];
-            int userTotalLogins = readFile.Ints["UserTotalLogins"];
-            double userHours = readFile.Doubles["UserHours"];
+            string userWorkstation = readFile.GetString("UserWorkstation");
+            DateTime? userLastLogin = readFile.GetDateTime("UserLastLogin");
+            int? userTotalLogins = readFile.GetInt("UserTotalLogins");
+            double? userHours = readFile.GetDouble("UserHours");
         }
     }
 }
